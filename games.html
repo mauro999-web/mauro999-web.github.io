@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Juegos - BillUpps Games</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    :root{--bg:#0d1117;--card:#0f1720;--muted:#9aa4b2;--accent:#58a6ff;--btn:#238636}
+    body{background:var(--bg);color:#e6eef3;font-family:Inter,Arial,Helvetica,sans-serif;margin:0;padding:20px}
+    .container{max-width:980px;margin:0 auto}
+    h1{color:var(--accent);margin:8px 0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:18px}
+    .card{background:var(--card);padding:14px;border-radius:10px}
+    .card h3{margin:0 0 6px}
+    .card p{color:var(--muted);margin:0 0 10px}
+    .btn{background:var(--btn);color:#fff;padding:10px 14px;border-radius:8px;text-decoration:none;font-weight:600}
+    .meta{color:var(--muted);font-size:0.9rem;margin-top:8px}
+    a.volver{display:inline-block;margin-top:14px;color:var(--accent);text-decoration:none}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎮 Juegos</h1>
+    <p class="lead">Aquí irán los juegos para jugar en el navegador. Abajo tienes ejemplos de plantilla que puedes reemplazar por tus juegos reales.</p>
+    <div class="grid">
+      <!-- Tarjeta de ejemplo 1 -->
+      <div class="card">
+        <h3>Mini-juego de ejemplo</h3>
+        <p>Un juego HTML5 exportado — se puede embeder o enlazar.</p>
+        <!-- Si tienes un paquete HTML exportado, pon su carpeta o el index.html aquí -->
+        <a class="btn" href="#" target="_blank" rel="noopener">Jugar (ejemplo)</a>
+        <p class="meta">Formato: HTML5 · Tamaño: 1.2 MB (ej.)</p>
+      </div>
+
+      <!-- Tarjeta de ejemplo 2 -->
+      <div class="card">
+        <h3>Juego embed (iframe)</h3>
+        <p>Si tienes una URL pública (itch.io, GameJolt u otro), la podemos embeber.</p>
+        <a class="btn" href="#" target="_blank" rel="noopener">Ver en nueva pestaña</a>
+        <p class="meta">Embed disponible</p>
+      </div>
+    </div>
+
+    <a class="volver" href="index.html">← Volver al inicio</a>
+  </div>
+</body>
+</html>
