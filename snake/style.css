@@ -1,0 +1,11 @@
+:root{--bg:#0d1117;--card:#0f1720;--muted:#9aa4b2;--accent:#58a6ff;--btn:#238636}
+*{box-sizing:border-box}
+body{background:var(--bg);color:#e6eef3;font-family:Inter,Arial,Helvetica,sans-serif;margin:0;padding:20px}
+.wrap{max-width:720px;margin:0 auto;text-align:center}
+h1{color:var(--accent);margin:6px 0}
+.lead{color:var(--muted);margin:6px 0 14px}
+.game-area{display:flex;gap:14px;align-items:flex-start;justify-content:center}
+canvas{background:#071012;border-radius:8px;display:block}
+.info{color:var(--muted);text-align:left}
+#restart{background:var(--btn);color:#fff;border:none;padding:8px 12px;border-radius:8px;cursor:pointer}
+.volver{display:inline-block;margin-top:14px;color:var(--accent);text-decoration:none}
