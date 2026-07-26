@@ -19,6 +19,9 @@
     .btn.disabled{opacity:0.6;pointer-events:none}
     .meta{color:var(--muted);font-size:0.9rem;margin-top:8px}
     a.volver{display:inline-block;margin-top:14px;color:var(--accent);text-decoration:none}
+
+    /* Small helper for accessibility focus when enabled */
+    .btn:not(.disabled):focus{outline:3px solid rgba(88,166,255,0.18);outline-offset:3px}
   </style>
 </head>
 <body>
@@ -30,8 +33,8 @@
       <div class="card">
         <h3>Mini-juego de ejemplo</h3>
         <p>Un juego HTML5 exportado — se puede embeder o enlazar.</p>
-        <!-- Placeholder: deshabilitado hasta que subas el juego -->
-        <a class="btn disabled" href="javascript:void(0);" title="Aún no disponible">Jugar (próximamente)</a>
+        <!-- Ahora usamos data-url: si hay una URL válida, JavaScript la activa y abre en nueva pestaña -->
+        <a class="btn disabled" href="javascript:void(0);" data-url="https://itch.io/" title="Aún no disponible" aria-disabled="true">Jugar (próximamente)</a>
         <p class="meta">Formato: HTML5 · Tamaño: 1.2 MB (ej.)</p>
       </div>
 
@@ -39,12 +42,42 @@
       <div class="card">
         <h3>Juego embed (iframe)</h3>
         <p>Si tienes una URL pública (itch.io, GameJolt u otro), la podemos embeber aquí.</p>
-        <a class="btn disabled" href="javascript:void(0);" title="Sube la URL para activarlo">Ver en nueva pestaña</a>
+        <!-- Sin data-url permanecerá deshabilitado hasta que agregues la URL -->
+        <a class="btn disabled" href="javascript:void(0);" title="Sube la URL para activarlo" aria-disabled="true">Ver en nueva pestaña</a>
         <p class="meta">Embed disponible</p>
       </div>
     </div>
 
     <a class="volver" href="index.html">← Volver al inicio</a>
   </div>
+
+  <script>
+    // Activa botones automáticamente si el elemento tiene data-url con contenido.
+    // Mejora: mantiene accesibilidad (aria-disabled) cuando no hay URL.
+    document.addEventListener('DOMContentLoaded', function(){
+      document.querySelectorAll('.btn').forEach(function(btn){
+        var url = btn.dataset.url;
+        if(url && url.trim() !== ''){
+          // Habilitar el botón
+          btn.classList.remove('disabled');
+          btn.removeAttribute('aria-disabled');
+          btn.href = url;
+          btn.target = '_blank';
+          btn.rel = 'noopener';
+          // Actualizar texto/tooltip si aún dice "próximamente"
+          if(/próximamente/i.test(btn.textContent) || /Aún no disponible/i.test(btn.title)){
+            // Mantiene el texto visible pero cambia la acción
+            btn.title = 'Abrir en nueva pestaña';
+          }
+        } else {
+          // Asegurarnos que botones sin URL no hagan nada y sean accesibles
+          btn.setAttribute('aria-disabled','true');
+          btn.addEventListener('click', function(e){
+            e.preventDefault();
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
